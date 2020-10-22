@@ -20,4 +20,4 @@ for eng, emoji in sorted(db_eng.items(), key=lambda k:k[0]):
     sorted_db_kor[find_key(db_kor, emoji)] = emoji
 
 with open("emoji-ko-sorted.json", "wb") as f:
-    f.write(json.dumps([sorted_db_kor], ensure_ascii = False).encode('utf8'))
+    f.write(json.dumps(sorted_db_kor, ensure_ascii = False).encode('utf8'))
