@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require('fs');
-const db = require("./db.json");
+const db = require("./emojiList/emoji-ko.json");
 const keys = Object.keys(db);
 
 client.on('ready', () => {
