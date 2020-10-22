@@ -30,9 +30,14 @@ client.on('message', msg => {
         let index = msg.content.indexOf(keys[i]);
         if (index == -1) continue;
 
-        let timer = setTimeout(() => {
-            msg.react(db[keys[i]]);
-        }, index*200);
+        let Q = []
+        for (let i=0, len = keys.length; i<len; i++) {
+            let index = msg.content.indexOf(keys[i]);
+            if (index === -1) continue;
+            Q.push([index,db[keys[i]]]);
+        }
+        Q.sort((a,b)=>(a[0] - b[0]));
+        Q.reduce((prev, item) => prev.then(()=>{msg.react(item[1])}), Promise.resolve())
     }
 });
 
